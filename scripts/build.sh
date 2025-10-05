@@ -127,7 +127,7 @@ echo "$DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD" | build-tools import-base6
 sudo xcode-select --switch "$MACOS_XCODE_PATH"
 xcodebuild \
     -project macos/PsionScreenSaver.xcodeproj \
-    -scheme "PsionScreenSaver" \
+    -scheme "Psion Screen Saver" \
     -config Release \
     -archivePath "$ARCHIVE_PATH" \
     OTHER_CODE_SIGN_FLAGS="--keychain=\"$KEYCHAIN_PATH\"" \
