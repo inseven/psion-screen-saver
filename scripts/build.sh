@@ -123,11 +123,6 @@ BUILD_NUMBER=`build-tools generate-build-number`
 # Import the certificates into our dedicated keychain.
 echo "$DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD" | build-tools import-base64-certificate --password "$KEYCHAIN_PATH" "$DEVELOPER_ID_APPLICATION_CERTIFICATE_BASE64"
 
-# Install the provisioning profiles.
-# build-tools install-provisioning-profile "profiles/Reconnect_Developer_ID_Profile.provisionprofile"
-# build-tools install-provisioning-profile "profiles/Reconnect_Menu_Developer_ID_Profile.provisionprofile"
-# build-tools install-provisioning-profile "profiles/Reconnect_Previews_Developer_ID_Profile.provisionprofile"
-
 # Build and archive the macOS project.
 sudo xcode-select --switch "$MACOS_XCODE_PATH"
 xcodebuild \
@@ -139,11 +134,6 @@ xcodebuild \
     CURRENT_PROJECT_VERSION=$BUILD_NUMBER \
     MARKETING_VERSION=$VERSION_NUMBER \
     clean build
-# xcodebuild \
-#     -archivePath "$ARCHIVE_PATH" \
-#     -exportArchive \
-#     -exportPath "$BUILD_DIRECTORY" \
-#     -exportOptionsPlist "ExportOptions.plist"
 
 cp -R "$BUILD_DIRECTORY/DerivedData/Build/Products/Release/PsionScreenSaver.saver" "$BUILD_DIRECTORY/PsionScreenSaver.saver"
 
@@ -160,22 +150,6 @@ build-tools notarize "$BUILD_DIRECTORY/PsionScreenSaver.saver" \
 
 exit
 
-# Build Sparkle.
-cd "$SPARKLE_DIRECTORY"
-xcodebuild -project Sparkle.xcodeproj -scheme generate_appcast SYMROOT=`pwd`/.build
-GENERATE_APPCAST=`pwd`/.build/Debug/generate_appcast
-
-SPARKLE_PRIVATE_KEY_FILE="$TEMPORARY_DIRECTORY/private-key-file"
-echo -n "$SPARKLE_PRIVATE_KEY_BASE64" | base64 --decode -o "$SPARKLE_PRIVATE_KEY_FILE"
-
-# Generate the appcast.
-cd "$ROOT_DIRECTORY"
-cp "$RELEASE_ZIP_PATH" "$ARCHIVES_DIRECTORY"
-changes notes --all --template "$RELEASE_NOTES_TEMPLATE_PATH" >> "$ARCHIVES_DIRECTORY/$RELEASE_BASENAME.html"
-"$GENERATE_APPCAST" --ed-key-file "$SPARKLE_PRIVATE_KEY_FILE" "$ARCHIVES_DIRECTORY"
-APPCAST_PATH="$ARCHIVES_DIRECTORY/appcast.xml"
-cp "$APPCAST_PATH" "$BUILD_DIRECTORY"
-
 # Archive the build directory.
 cd "$ROOT_DIRECTORY"
 ZIP_BASENAME="build-$VERSION_NUMBER-$BUILD_NUMBER.zip"
@@ -190,7 +164,7 @@ if $RELEASE ; then
         release \
         --skip-if-empty \
         --push \
-        --exec "${RELEASE_SCRIPT_PATH}" \
-        "${RELEASE_ZIP_PATH}" "${ZIP_PATH}" "$BUILD_DIRECTORY/appcast.xml"
+        --exec "$RELEASE_SCRIPT_PATH" \
+        "$RELEASE_ZIP_PATH" "$ZIP_PATH"
 
 fi
