@@ -134,22 +134,24 @@ xcodebuild \
     -project macos/PsionScreenSaver.xcodeproj \
     -scheme "PsionScreenSaver" \
     -config Release \
-    -archivePath "$ARCHIVE_PATH" \
+    -derivedDataPath "$BUILD_DIRECTORY/DerivedData" \
     OTHER_CODE_SIGN_FLAGS="--keychain=\"${KEYCHAIN_PATH}\"" \
     CURRENT_PROJECT_VERSION=$BUILD_NUMBER \
     MARKETING_VERSION=$VERSION_NUMBER \
-    clean archive
+    clean build
 # xcodebuild \
 #     -archivePath "$ARCHIVE_PATH" \
 #     -exportArchive \
 #     -exportPath "$BUILD_DIRECTORY" \
 #     -exportOptionsPlist "ExportOptions.plist"
 
+cp -R "$BUILD_DIRECTORY/DerivedData/Build/Products/Release/PsionScreenSaver.saver" "$BUILD_DIRECTORY/PsionScreenSaver.saver"
+
 exit
 
 # Apple recommends we use ditto to prepare zips for notarization.
 # https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow
-RELEASE_BASENAME="Reconnect-$VERSION_NUMBER-$BUILD_NUMBER"
+RELEASE_BASENAME="Psion-Screen-Saver-$VERSION_NUMBER-$BUILD_NUMBER"
 RELEASE_ZIP_BASENAME="$RELEASE_BASENAME.zip"
 RELEASE_ZIP_PATH="$BUILD_DIRECTORY/$RELEASE_ZIP_BASENAME"
 pushd "$BUILD_DIRECTORY"
