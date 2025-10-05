@@ -14,16 +14,16 @@
 /* Begin PBXFileReference section */
 		D81788512E5EB4CA002359BA /* Screensaver Preview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Screensaver Preview.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D81788622E5EBD6E002359BA /* ScreensaverCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ScreensaverCore; sourceTree = "<group>"; };
-		D8FBD5262E5E99010036FD57 /* PsionScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PsionScreenSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8FBD5262E5E99010036FD57 /* Psion Screen Saver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Psion Screen Saver.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		D8FBD5362E5E9A580036FD57 /* Exceptions for "PsionScreenSaver" folder in "PsionScreenSaver" target */ = {
+		D8FBD5362E5E9A580036FD57 /* Exceptions for "PsionScreenSaver" folder in "Psion Screen Saver" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"PsionScreenSaver-Bridging-Header.h",
 			);
-			target = D8FBD5252E5E99010036FD57 /* PsionScreenSaver */;
+			target = D8FBD5252E5E99010036FD57 /* Psion Screen Saver */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -36,7 +36,7 @@
 		D8FBD5282E5E99010036FD57 /* PsionScreenSaver */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				D8FBD5362E5E9A580036FD57 /* Exceptions for "PsionScreenSaver" folder in "PsionScreenSaver" target */,
+				D8FBD5362E5E9A580036FD57 /* Exceptions for "PsionScreenSaver" folder in "Psion Screen Saver" target */,
 			);
 			path = PsionScreenSaver;
 			sourceTree = "<group>";
@@ -84,7 +84,7 @@
 		D8FBD5272E5E99010036FD57 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D8FBD5262E5E99010036FD57 /* PsionScreenSaver.saver */,
+				D8FBD5262E5E99010036FD57 /* Psion Screen Saver.saver */,
 				D81788512E5EB4CA002359BA /* Screensaver Preview.app */,
 			);
 			name = Products;
@@ -126,9 +126,9 @@
 			productReference = D81788512E5EB4CA002359BA /* Screensaver Preview.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D8FBD5252E5E99010036FD57 /* PsionScreenSaver */ = {
+		D8FBD5252E5E99010036FD57 /* Psion Screen Saver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D8FBD52F2E5E99010036FD57 /* Build configuration list for PBXNativeTarget "PsionScreenSaver" */;
+			buildConfigurationList = D8FBD52F2E5E99010036FD57 /* Build configuration list for PBXNativeTarget "Psion Screen Saver" */;
 			buildPhases = (
 				D8FBD5212E5E99010036FD57 /* Headers */,
 				D8FBD5222E5E99010036FD57 /* Sources */,
@@ -142,12 +142,12 @@
 			fileSystemSynchronizedGroups = (
 				D8FBD5282E5E99010036FD57 /* PsionScreenSaver */,
 			);
-			name = PsionScreenSaver;
+			name = "Psion Screen Saver";
 			packageProductDependencies = (
 				D81788662E5EBE72002359BA /* ScreensaverCore */,
 			);
 			productName = PsionScreenSaver;
-			productReference = D8FBD5262E5E99010036FD57 /* PsionScreenSaver.saver */;
+			productReference = D8FBD5262E5E99010036FD57 /* Psion Screen Saver.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -183,7 +183,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D8FBD5252E5E99010036FD57 /* PsionScreenSaver */,
+				D8FBD5252E5E99010036FD57 /* Psion Screen Saver */,
 				D81788502E5EB4CA002359BA /* Screensaver Preview */,
 			);
 		};
@@ -469,7 +469,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D8FBD52F2E5E99010036FD57 /* Build configuration list for PBXNativeTarget "PsionScreenSaver" */ = {
+		D8FBD52F2E5E99010036FD57 /* Build configuration list for PBXNativeTarget "Psion Screen Saver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D8FBD5302E5E99010036FD57 /* Debug */,
