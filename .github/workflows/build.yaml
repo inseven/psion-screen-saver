@@ -38,8 +38,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         RELEASE: ${{ github.ref == 'refs/heads/main' }}
 
-  #     run: |
-  #       scripts/build.sh
+      run: |
+        scripts/build.sh
 
   #   - name: Archive the binary
   #     uses: actions/upload-artifact@v4
