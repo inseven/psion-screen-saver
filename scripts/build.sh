@@ -129,13 +129,15 @@ xcodebuild \
     -project macos/PsionScreenSaver.xcodeproj \
     -scheme "PsionScreenSaver" \
     -config Release \
-    -derivedDataPath "$BUILD_DIRECTORY/DerivedData" \
-    OTHER_CODE_SIGN_FLAGS="--keychain=\"${KEYCHAIN_PATH}\"" \
+    -archivePath "$ARCHIVE_PATH" \
+    OTHER_CODE_SIGN_FLAGS="--keychain=\"$KEYCHAIN_PATH\"" \
     CURRENT_PROJECT_VERSION=$BUILD_NUMBER \
     MARKETING_VERSION=$VERSION_NUMBER \
-    clean build
+    clean archive
 
-cp -R "$BUILD_DIRECTORY/DerivedData/Build/Products/Release/PsionScreenSaver.saver" "$BUILD_DIRECTORY/PsionScreenSaver.saver"
+# Copy the screen saver out of the archive.
+# Unfortunately Xcode doesn't seem to know how to do this for us because we're not an app.
+cp -R "$BUILD_DIRECTOR/Products/Users/$USER/Library/Screen Savers/PsionScreenSaver.saver" "$BUILD_DIRECTORY/PsionScreenSaver.saver"
 
 # Install the private key.
 mkdir -p ~/.appstoreconnect/private_keys/
