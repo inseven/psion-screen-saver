@@ -131,7 +131,7 @@ echo "$DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD" | build-tools import-base6
 # Build and archive the macOS project.
 sudo xcode-select --switch "$MACOS_XCODE_PATH"
 xcodebuild \
-    -project macos/Reconnect.xcodeproj \
+    -project macos/PsionScreenSaver.xcodeproj \
     -scheme "PsionScreenSaver" \
     -config Release \
     -archivePath "$ARCHIVE_PATH" \
