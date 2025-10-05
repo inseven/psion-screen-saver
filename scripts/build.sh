@@ -153,7 +153,7 @@ API_KEY_PATH=~/".appstoreconnect/private_keys/AuthKey_${APPLE_API_KEY_ID}.p8"
 echo -n "$APPLE_API_KEY_BASE64" | base64 --decode -o "$API_KEY_PATH"
 
 # Notarize and staple the app.
-build-tools notarize "$BUILD_DIRECTORY/PsionScreenSaver.app" \
+build-tools notarize "$BUILD_DIRECTORY/PsionScreenSaver.saver" \
     --key "$API_KEY_PATH" \
     --key-id "$APPLE_API_KEY_ID" \
     --issuer "$APPLE_API_KEY_ISSUER_ID"
