@@ -148,7 +148,8 @@ echo -n "$APPLE_API_KEY_BASE64" | base64 --decode -o "$API_KEY_PATH"
 build-tools notarize "$BUILD_DIRECTORY/Psion Screen Saver.saver" \
     --key "$API_KEY_PATH" \
     --key-id "$APPLE_API_KEY_ID" \
-    --issuer "$APPLE_API_KEY_ISSUER_ID"
+    --issuer "$APPLE_API_KEY_ISSUER_ID" \
+    --log "$BUILD_DIRECTORY/notarization-log.json"
 
 # Compress the app.
 APP_BASENAME="Psion Screen Saver.saver"
