@@ -137,7 +137,7 @@ xcodebuild \
 
 # Copy the screen saver out of the archive.
 # Unfortunately Xcode doesn't seem to know how to do this for us because we're not an app.
-cp -R "$BUILD_DIRECTOR/Products/Users/$USER/Library/Screen Savers/PsionScreenSaver.saver" "$BUILD_DIRECTORY/PsionScreenSaver.saver"
+cp -R "$BUILD_DIRECTOR/Products/Users/$USER/Library/Screen Savers/PsionScreenSaver.saver" "$BUILD_DIRECTORY/Psion Screen Saver.saver"
 
 # Install the private key.
 mkdir -p ~/.appstoreconnect/private_keys/
@@ -145,12 +145,20 @@ API_KEY_PATH=~/".appstoreconnect/private_keys/AuthKey_${APPLE_API_KEY_ID}.p8"
 echo -n "$APPLE_API_KEY_BASE64" | base64 --decode -o "$API_KEY_PATH"
 
 # Notarize and staple the app.
-build-tools notarize "$BUILD_DIRECTORY/PsionScreenSaver.saver" \
+build-tools notarize "$BUILD_DIRECTORY/Psion Screen Saver.saver" \
     --key "$API_KEY_PATH" \
     --key-id "$APPLE_API_KEY_ID" \
     --issuer "$APPLE_API_KEY_ISSUER_ID"
 
-exit
+# Compress the app.
+APP_BASENAME="Psion Screen Saver.saver"
+RELEASE_BASENAME="Psion-Screen-Saver-$VERSION_NUMBER-$BUILD_NUMBER"
+RELEASE_ZIP_BASENAME="$RELEASE_BASENAME.zip"
+RELEASE_ZIP_PATH="$BUILD_DIRECTORY/$RELEASE_ZIP_BASENAME"
+pushd "$BUILD_DIRECTORY"
+zip --symlinks -r "$RELEASE_ZIP_BASENAME" "$APP_BASENAME"
+rm -r "$APP_BASENAME"
+popd
 
 # Archive the build directory.
 cd "$ROOT_DIRECTORY"
