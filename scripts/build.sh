@@ -128,24 +128,24 @@ build-tools install-provisioning-profile "profiles/Reconnect_Developer_ID_Profil
 build-tools install-provisioning-profile "profiles/Reconnect_Menu_Developer_ID_Profile.provisionprofile"
 build-tools install-provisioning-profile "profiles/Reconnect_Previews_Developer_ID_Profile.provisionprofile"
 
-exit
-
 # Build and archive the macOS project.
 sudo xcode-select --switch "$MACOS_XCODE_PATH"
 xcodebuild \
-    -project Reconnect.xcodeproj \
-    -scheme "Reconnect" \
+    -project macos/Reconnect.xcodeproj \
+    -scheme "PsionScreenSaver" \
     -config Release \
     -archivePath "$ARCHIVE_PATH" \
     OTHER_CODE_SIGN_FLAGS="--keychain=\"${KEYCHAIN_PATH}\"" \
     CURRENT_PROJECT_VERSION=$BUILD_NUMBER \
     MARKETING_VERSION=$VERSION_NUMBER \
     clean archive
-xcodebuild \
-    -archivePath "$ARCHIVE_PATH" \
-    -exportArchive \
-    -exportPath "$BUILD_DIRECTORY" \
-    -exportOptionsPlist "ExportOptions.plist"
+# xcodebuild \
+#     -archivePath "$ARCHIVE_PATH" \
+#     -exportArchive \
+#     -exportPath "$BUILD_DIRECTORY" \
+#     -exportOptionsPlist "ExportOptions.plist"
+
+exit
 
 # Apple recommends we use ditto to prepare zips for notarization.
 # https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow
