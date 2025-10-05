@@ -134,6 +134,7 @@
 				D8FBD5222E5E99010036FD57 /* Sources */,
 				D8FBD5232E5E99010036FD57 /* Frameworks */,
 				D8FBD5242E5E99010036FD57 /* Resources */,
+				D82C5EA82E932CB000C9E0FA /* Re-Sign With Secure Timestamp */,
 			);
 			buildRules = (
 			);
@@ -205,6 +206,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D82C5EA82E932CB000C9E0FA /* Re-Sign With Secure Timestamp */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Re-Sign With Secure Timestamp";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    codesign --force \\\n      --sign \"${CODE_SIGN_IDENTITY}\" \\\n      --timestamp \\\n      --options runtime \\\n      \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.saver\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D817884D2E5EB4CA002359BA /* Sources */ = {
@@ -412,7 +434,6 @@
 				INFOPLIST_KEY_NSPrincipalClass = MainView;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				MARKETING_VERSION = 1.0;
-				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.jbmorley.psion-screen-saver.PsionScreenSaver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -439,7 +460,6 @@
 				INFOPLIST_KEY_NSPrincipalClass = MainView;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				MARKETING_VERSION = 1.0;
-				OTHER_CODE_SIGN_FLAGS = "--timestamp";
 				PRODUCT_BUNDLE_IDENTIFIER = "uk.co.jbmorley.psion-screen-saver.PsionScreenSaver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
