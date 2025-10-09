@@ -88,26 +88,4 @@ class MainView: ScreenSaverView {
 
 }
 
-struct ConfigurationView: View {
 
-    let dismiss: () -> Void
-
-    var body: some View {
-        Form {
-            Text("Foo")
-            Text("Bar")
-            Text("Baz")
-        }
-        .formStyle(.grouped)
-        .padding()
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("OK") {
-                    dismiss()
-                }
-            }
-        }
-        .frame(width: 400, height: 300)
-    }
-
-}
