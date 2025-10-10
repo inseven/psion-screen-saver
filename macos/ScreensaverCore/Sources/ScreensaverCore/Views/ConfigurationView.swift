@@ -23,6 +23,10 @@ import SwiftUI
 
 import Diligence
 
+public class BundleAnchor {
+
+}
+
 public struct ConfigurationView: View {
 
     @Environment(\.openURL) private var openURL
@@ -35,7 +39,8 @@ public struct ConfigurationView: View {
 
     public var body: some View {
         Form {
-            BuildSection("inseven/psion-screen-saver") {
+
+            BuildSection("inseven/psion-screen-saver", bundle: Bundle(for: BundleAnchor.self)) {
                 Text("About")
             }
             Section("Links") {
