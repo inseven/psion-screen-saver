@@ -123,16 +123,20 @@ BUILD_NUMBER=`build-tools generate-build-number`
 # Import the certificates into our dedicated keychain.
 echo "$DEVELOPER_ID_APPLICATION_CERTIFICATE_PASSWORD" | build-tools import-base64-certificate --password "$KEYCHAIN_PATH" "$DEVELOPER_ID_APPLICATION_CERTIFICATE_BASE64"
 
+cat > /tmp/versions.xcconfig << EOF
+CURRENT_PROJECT_VERSION = $BUILD_NUMBER
+MARKETING_VERSION = $VERSION_NUMBER
+EOF
+
 # Build and archive the macOS project.
 sudo xcode-select --switch "$MACOS_XCODE_PATH"
 xcodebuild \
     -project macos/PsionScreenSaver.xcodeproj \
     -scheme "Psion Screen Saver" \
     -config Release \
+    -xcconfig /tmp/versions.xcconfig \
     -archivePath "$ARCHIVE_PATH" \
     OTHER_CODE_SIGN_FLAGS="--keychain=\"$KEYCHAIN_PATH\"" \
-    CURRENT_PROJECT_VERSION=$BUILD_NUMBER \
-    MARKETING_VERSION=$VERSION_NUMBER \
     clean archive
 
 # Copy the screen saver out of the archive.
