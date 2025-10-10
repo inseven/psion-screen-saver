@@ -51,7 +51,6 @@ public struct ConfigurationView: View {
             }
         }
         .formStyle(.grouped)
-        .prefersTextualRepresentation(false)
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 0) {
                 Divider()
