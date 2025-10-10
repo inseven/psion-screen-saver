@@ -21,7 +21,11 @@
 import ScreenSaver
 import SwiftUI
 
+import Diligence
+
 public struct ConfigurationView: View {
+
+    @Environment(\.openURL) private var openURL
 
     let dismiss: () -> Void
 
@@ -31,20 +35,32 @@ public struct ConfigurationView: View {
 
     public var body: some View {
         Form {
-            Text("Foo")
-            Text("Bar")
-            Text("Baz")
-        }
-        .formStyle(.grouped)
-        .padding()
-        .toolbar {
-            ToolbarItem(placement: .confirmationAction) {
-                Button("OK") {
-                    dismiss()
-                }
+            BuildSection("inseven/psion-screen-saver") {
+                Text("About")
+            }
+            Section("Links") {
+                Link("GitHub", url: URL(string: "https://github.com/inseven/psion-screen-saver")!)
+            }
+            Section("Developers") {
+                Link("Jason Morley", url: URL(string: "https://jbmorley.co.uk")!)
             }
         }
-        .frame(width: 400, height: 300)
+        .formStyle(.grouped)
+        .safeAreaInset(edge: .bottom) {
+            VStack(spacing: 0) {
+                Divider()
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                .padding()
+            }
+            .background(Color(nsColor: .textBackgroundColor))
+        }
+        .frame(width: 460, height: 460)
     }
 
 }

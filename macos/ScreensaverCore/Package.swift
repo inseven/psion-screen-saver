@@ -12,9 +12,15 @@ let package = Package(
             name: "ScreensaverCore",
             targets: ["ScreensaverCore"]),
     ],
+    dependencies: [
+        .package(path: "../dependencies/diligence"),
+    ],
     targets: [
         .target(
             name: "ScreensaverCore",
+            dependencies: [
+                .product(name: "Diligence", package: "diligence"),
+            ],
             resources: [
                 .process("Resources")
             ]
