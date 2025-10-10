@@ -2,7 +2,7 @@
 
 [![build](https://github.com/inseven/psion-screen-saver/actions/workflows/build.yaml/badge.svg)](https://github.com/inseven/psion-screen-saver/actions/workflows/build.yaml)
 
-Recreation of a Psion Screen Saver from the late 90s.
+Retro Screen Saver for macOS.
 
 ![](images/preview.gif)
 
