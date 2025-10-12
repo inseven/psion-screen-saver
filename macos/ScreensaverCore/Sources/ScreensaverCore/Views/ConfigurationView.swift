@@ -23,8 +23,6 @@ import SwiftUI
 
 import Diligence
 
-
-
 public struct ConfigurationView: View {
 
     @Environment(\.openURL) private var openURL
