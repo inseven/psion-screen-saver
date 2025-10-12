@@ -35,7 +35,10 @@ public struct ConfigurationView: View {
 
     public var body: some View {
         Form {
-            BuildSection("inseven/psion-screen-saver") {
+
+            // Sicne we're hosted inside a different process, `Bundle.main` doesn't correspond with our bundle. Instead,
+            // we look up our bundle by class.
+            BuildSection("inseven/psion-screen-saver", bundle: Bundle(for: BundleAnchor.self)) {
                 Text("About")
             }
             Section("Links") {
