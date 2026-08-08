@@ -1,1 +1,5 @@
 /.local
+/scripts/Pipfile.lock
+archives
+build
+temp
