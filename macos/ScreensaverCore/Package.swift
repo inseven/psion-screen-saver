@@ -13,7 +13,7 @@ let package = Package(
             targets: ["ScreensaverCore"]),
     ],
     dependencies: [
-        .package(path: "../dependencies/diligence"),
+        .package(url: "https://github.com/inseven/diligence.git", from: "2.0.1"),
     ],
     targets: [
         .target(
