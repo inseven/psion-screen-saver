@@ -1,3 +1,0 @@
-[submodule "macos/diligence"]
-	path = macos/dependencies/diligence
-	url = https://github.com/inseven/diligence.git
